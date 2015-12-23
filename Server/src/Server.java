@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 
 
@@ -8,7 +9,7 @@ public class Server {
 	
 	public void listenSocket() {
 		try {
-			server = new ServerSocket(4444);
+			server = new ServerSocket(4444, 0, InetAddress.getByName(null));
 		} catch (IOException e) {
 			System.out.println("Could not listen on port 4444");
 		    System.exit(-1);
@@ -35,5 +36,11 @@ public class Server {
 			System.out.println("Could not close socket");
 	        System.exit(-1);
 		}
+	}
+	
+	public static void main(String[] args) {
+		Server server = new Server();
+		server.listenSocket();
+		System.out.println("Server stopped");
 	}
 }

@@ -15,7 +15,7 @@ public class Client {
 	
 	public void listenSocket() {
 		try {
-			socket = new Socket("Marius", 4321);
+			socket = new Socket("localhost", 4444);
 			output = new PrintWriter(socket.getOutputStream());
 			input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		} catch (UnknownHostException e) {
@@ -34,8 +34,15 @@ public class Client {
 			String line = input.readLine();
 			System.out.println("Text received: " + line);
 		} catch (IOException e) {
-			System.out.println("Read failed");
+			System.out.println("Client Read failed");
 		    System.exit(1);
 		}
+	}
+	
+	public static void main(String[] args) {
+		Client client = new Client();
+		client.listenSocket();
+		client.sendAndReceive();
+		System.out.println("client done");
 	}
 }
