@@ -25,16 +25,28 @@ public class Client {
 			System.out.println("No I/O");
 		    System.exit(1);
 		}
+		System.out.println("Connecting to " + socket.getRemoteSocketAddress());
 	}
 	
 	public void sendAndReceive() {
+		System.out.println("Sending");
 		output.println("Dette er marius");
-		
+		output.flush();
+		System.out.println("Sending complete");
 		try {
+			System.out.println("Receiving");
 			String line = input.readLine();
+			System.out.println("Receiving complete");
 			System.out.println("Text received: " + line);
 		} catch (IOException e) {
 			System.out.println("Client Read failed");
+		    System.exit(1);
+		}
+		
+		try {
+			socket.close();
+		} catch (IOException e) {
+			System.out.println("Socket close fail");
 		    System.exit(1);
 		}
 	}

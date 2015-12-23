@@ -9,7 +9,7 @@ public class Server {
 	
 	public void listenSocket() {
 		try {
-			server = new ServerSocket(4444, 0, InetAddress.getByName(null));
+			server = new ServerSocket(4444);
 		} catch (IOException e) {
 			System.out.println("Could not listen on port 4444");
 		    System.exit(-1);
@@ -39,6 +39,7 @@ public class Server {
 	}
 	
 	public static void main(String[] args) {
+		System.out.println("Server starting");
 		Server server = new Server();
 		server.listenSocket();
 		System.out.println("Server stopped");

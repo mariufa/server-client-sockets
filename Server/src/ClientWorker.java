@@ -25,17 +25,20 @@ public class ClientWorker implements Runnable {
 			System.out.println("in or out failed");
 		    System.exit(-1);
 		}
+		System.out.println("Connected to client " + client.getRemoteSocketAddress());
 		
-		while(true) {
-			try {
-				line = input.readLine();
-				System.out.println(line);
-				output.println(line);
-			} catch (Exception e) {
-				System.out.println("Read failed");
-		        System.exit(-1);
-			}
+		try {
+			System.out.println("Trying to receive");
+			line = input.readLine();
+			System.out.println("Received: " + line);
+			output.println(line);
+			System.out.println("Sent: " + line);
+		} catch (IOException e) {
+			System.out.println("Read failed");
+	        System.exit(-1);
 		}
+		
+		System.out.println();
 	}
 
 }
