@@ -80,13 +80,13 @@ public class Client {
 		this.message = message;
 	}
 	
-	public static void main(String[] args) {
-		Client client = new Client();
-		client.loadDeviceName();
-		client.connectSocket();
-		client.setMessage("Dette er marius");
-		client.sendAndReceive();
-		client.closeSocket();
-		System.out.println("client done");
-	}
+// TO BE DELETED
+//	public static void main(String[] args) {
+//		Client client = new Client();
+//		client.connectSocket();
+//		client.setMessage("Dette er marius");
+//		client.sendAndReceive();
+//		client.closeSocket();
+//		System.out.println("client done");
+//	}
 }
